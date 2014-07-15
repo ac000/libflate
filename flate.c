@@ -26,6 +26,8 @@
 #include <ctype.h>
 #include <time.h>
 
+#include <fcgiapp.h>
+
 #include "flate.h"
 
 
@@ -645,7 +647,7 @@ void flateDumpTableLine(Flate *tmplte, char *ligne) {
 /*
  * prints all template parts to standard output
  */
-void flatePrint(Flate *tmplte, char *type) {
+void flatePrint(Flate *tmplte, char *type, FCGX_Stream *out) {
     tempUnit *Unit;
     char *ptr;
     int pr;
@@ -655,7 +657,7 @@ void flatePrint(Flate *tmplte, char *type) {
         puts(tmplte->cookies);
     }
     if (type && type[0] != '\0') {
-        printf("Content-type: %s\n\n", type);
+        FCGX_FPrintF(out, "Content-Type: %s\r\n\r\n", type);
     }
     
     Unit = tmplte->UnitInit;
@@ -687,7 +689,7 @@ void flatePrint(Flate *tmplte, char *type) {
             ptr = (char *)malloc(Unit->tdata + 1);
             memcpy(ptr, Unit->data, Unit->tdata);
             ptr[Unit->tdata] = '\0';
-            fputs(ptr, stdout);
+            FCGX_PutS(ptr, out);
             free(ptr);
         }
         if (Unit)

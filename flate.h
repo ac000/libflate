@@ -25,6 +25,8 @@
 
 #include <time.h>
 
+#include <fcgiapp.h>
+
 typedef struct tempUnit {
     struct tempUnit *next;
     struct tempUnit *prev;
@@ -62,7 +64,7 @@ extern void flateSetCookie(Flate *tmplte, char *name, char *value, char *domain,
 extern int flateGetCookie(char *value, int valuesz, char *cookie, int (*checkfunc)(int c));
 extern void flateSetVar(Flate *tmplte, char *fld, char *val);
 extern void flateDumpTableLine(Flate *tmplte, char *line);
-extern void flatePrint(Flate *tmplte, char *type);
+extern void flatePrint(Flate *tmplte, char *type, FCGX_Stream *out);
 extern char *flatePage(Flate *tmplte);
 extern void flateFreeMem(Flate *tmplte);
 extern FlateForm *flateAddForm(FlateForm *field, char *name, int sz, int (*checkfunc)(int c));
