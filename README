@@ -105,10 +105,12 @@ leading to a crash if *f points to a random pointer.
 flateSetFile(&f, "template.html");
   will load the file into memory and initialize the f template.
 
-flateSetVar(f, "variable", "value");
-  will set ##variable## in the HTML template to "value".
+flateSetVar(f, "variable", "value", fmt_func);
+  will set ##variable## in the HTML template to "value". If fmt_func is
+  not NULL, value will be passed to fmt_func and the value returned from
+  fmt_func will be used. This can be used to render XSS attacks void.
 
-flateSetVar(f, "myzone", "");
+flateSetVar(f, "myzone", "", NULL);
   will display the block between
     <!-- #BEGINZONE myzone --> <!-- #ENDZONE myzone -->
 

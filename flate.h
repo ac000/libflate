@@ -60,7 +60,7 @@ typedef struct s_form {
 extern Flate *flateSetFile(Flate **tmplte, char *filename);
 extern void flateSetCookie(Flate *tmplte, char *name, char *value, char *domain, time_t expires);
 extern int flateGetCookie(char *value, int valuesz, char *cookie, int (*checkfunc)(int c));
-extern void flateSetVar(Flate *tmplte, char *fld, char *val);
+extern void flateSetVar(Flate *tmplte, char *fld, char *val, char *(*fmt)(const char *));
 extern void flateDumpTableLine(Flate *tmplte, char *line);
 extern void flatePrint(Flate *tmplte, char *type);
 extern char *flatePage(Flate *tmplte);
