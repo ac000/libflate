@@ -1,5 +1,18 @@
 NOTE: This is a version of the FLATE Library suitable for using with the
-FastCGI FCGX <fcgiapp.h) API.
+FastCGI FCGX (fcgiapp.h) API.
+
+There is one enhancement in this branch. The ability to pass a format
+function to flateSetVar() thus this functions now needs four arguments,
+with the fourth being either NULL or the name of the format function to
+use. The format function should have the following prototype
+
+    char *fmt_func(const char *)
+
+it should return a dynamically allocated string (this will be freed by
+flateFreeMem)
+
+This would be useful for doing things like rendering untrusted output
+safe for the browser to combat XSS attacks.
 
 -- Andrew Clayton
 
