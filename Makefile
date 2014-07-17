@@ -1,5 +1,5 @@
 CC	= gcc
-CFLAGS	= -Wall
+CFLAGS	= -Wall -fPIC
 AR	= ar -r
 RM	= rm -f
 
