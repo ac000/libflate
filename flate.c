@@ -649,7 +649,7 @@ void flateDumpTableLine(Flate *tmplte, char *ligne) {
 
 
 /*
- * prints all template parts to standard output
+ * prints all template parts to the FCGX socket
  */
 void flatePrint(Flate *tmplte, char *type, FCGX_Stream *out) {
     tempUnit *Unit;
