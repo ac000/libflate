@@ -1,5 +1,5 @@
 CC	= gcc
-CFLAGS	= -Wall -fPIC
+CFLAGS	= -Wall -O2 -g -Wp,-D_FORTIFY_SOURCE=2 -D_FILE_OFFSET_BITS=64 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -fPIC
 AR	= ar -r
 RM	= rm -f
 
