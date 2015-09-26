@@ -876,7 +876,7 @@ int flateReadForm(FlateForm *form) {
     char buffer[MAXVALSIZE + 1];
     char field[MAXFIELDSIZE + 1];
     char *qptr, *ptr, c = '\0';
-    int hexchar;
+    int hexchar = 0;
     int hasunk = 0; /* if we have encountered an unknown field, return the information to the caller */
     int method;
     int sz, rsz;
