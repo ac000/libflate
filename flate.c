@@ -474,7 +474,7 @@ int flateGetCookie(char *value, int valuesz, char *cookie, int (*checkfunc)(int 
 /*
  * assigns a value in the template to a variable, or marks a zone for display
  */
-void flateSetVar(Flate *tmplte, char *fld, char *val,
+void flateSetVar(Flate *tmplte, const char *fld, const char *val,
 		 char *(*fmt)(const char *)) {
     tempUnit *Unit;
     st_ptr *rec;
