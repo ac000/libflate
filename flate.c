@@ -616,14 +616,7 @@ void flateDumpTableLine(Flate *tmplte, char *ligne) {
                     if (pr) {
                         flateDumpUnit(UnitS, Unit);
                     }
-                    /*
-                     * if the unit is a variable, reinitialize it once copied
-                     */
-                    if (Unit->type == FLATE_VAR) {
-                        free(Unit->data);
-                        Unit->data = NULL;
-                        Unit->tdata = 0;
-                    } else if (Unit->type == FLATE_BEGINZONE) {
+                    if (Unit->type == FLATE_BEGINZONE) {
                         Unit->tdata = 0;
                     }
                 }
