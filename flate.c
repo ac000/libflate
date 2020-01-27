@@ -874,7 +874,7 @@ int flateReadForm(FlateForm *form) {
     int method;
     int sz, rsz;
     int pos;
-    int state, pstate;
+    int state, pstate = 0;
     int done = 0;
     int hexc = 0; /* used to parse hexa encoding of special characters (%20 in string) */
     
