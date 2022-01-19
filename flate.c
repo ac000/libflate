@@ -867,12 +867,12 @@ int flateReadForm(FlateForm *form) {
     char buffer[MAXVALSIZE + 1];
     char field[MAXFIELDSIZE + 1];
     char *qptr, *ptr, c;
-    int hexchar;
+    int hexchar = 0;
     int hasunk = 0; /* if we have encountered an unknown field, return the information to the caller */
     int method;
     int sz, rsz;
     int pos;
-    int state, pstate;
+    int state, pstate = 0;
     int done = 0;
     int hexc = 0; /* used to parse hexa encoding of special characters (%20 in string) */
     
