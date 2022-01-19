@@ -1,3 +1,21 @@
+*** Don't use this branch, just use master.
+***
+*** Rather than have FLATE know about the FCGX API, use flatePage() to get
+*** a buffer of the HTML page to send and send it with FCGX_FPrintF(). E.g
+
+    void send_page(Flate *f, FCGX_Stream *out)
+    {
+         char *buf = flatePage(f);
+
+         FCGX_FPrintF(out, "Content-Type: text/html\r\n\r\n%s", buf);
+         flateFreeMem(f);
+         free(buf);
+    }
+
+*** The master branch includes the below fmt_func() enhancement to
+*** flateSetVar()
+
+
 NOTE: This is a version of the FLATE Library suitable for using with the
 FastCGI FCGX (fcgiapp.h) API.
 
