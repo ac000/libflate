@@ -131,7 +131,7 @@ Flate *flateSetFile(Flate **tmplte, char *filename) {
     char *filebuf;
     int filesize;
     int tocopy;
-    char *rootdir;
+    char *rootdir = NULL;
 
 
     /* if we have a DOCUMENT_ROOT environment variable, add it in front of filename, unless a - is used as a first character */
