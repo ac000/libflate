@@ -283,10 +283,13 @@ Flate *flateSetFile(Flate **tmplte, char *filename) {
                 }
 
                 if (filebuf) {
+                    int cur_size = size;
+
                     pos++;
                     tocopy = size - pos;
                     size += filesize - (pos - start);
-                    tempBuf = (char *)realloc(tempBuf, size);
+                    if (size > cur_size)
+                        tempBuf = (char *)realloc(tempBuf, size);
                     memmove(tempBuf + start + filesize, tempBuf + pos, tocopy);
                     memcpy(tempBuf + start, filebuf, filesize);
                     free(filebuf);

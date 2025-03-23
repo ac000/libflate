@@ -207,12 +207,16 @@ int main(int argc, char *argv[]) {
                 } else
                     filebuf = includefile(nom, &filesize);
                 if (filebuf) {
+                    int cur_size = tplsize;
+
                     pos++;
                     tplsize += filesize - (pos - debut);
-                    tempBuf = (char *)realloc(tempBuf, tplsize);
+                    if (tplsize > cur_size)
+                        tempBuf = (char *)realloc(tempBuf, tplsize);
                     memmove(tempBuf + debut + filesize, tempBuf + pos, tplsize - debut - filesize);
                     memcpy(tempBuf + debut, filebuf, filesize);
                     free(filebuf);
+                    pos = debut;
                     continue;
                 } else {
                     printf("ERROR: could not open file %s given in INCLUDEFILE.\n", nom);
