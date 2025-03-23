@@ -210,7 +210,7 @@ int main(int argc, char *argv[]) {
                     pos++;
                     tplsize += filesize - (pos - debut);
                     tempBuf = (char *)realloc(tempBuf, tplsize);
-                    memmove(tempBuf + debut + filesize, tempBuf + pos, tplsize - pos - filesize);
+                    memmove(tempBuf + debut + filesize, tempBuf + pos, tplsize - debut - filesize);
                     memcpy(tempBuf + debut, filebuf, filesize);
                     free(filebuf);
                     continue;
